@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width", initial-scale=1, shrink-to-fit="no">
+	<!-- helluva lot of css missing currently -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!--
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styling.css') }}">
+
+	  
+
+	{% if title %}
+		<title>Flask Experiment - {{ title }}</title>
+	{% else %}	
+		<title>Flask Experiment</title>
+	{% endif %}
+	<link rel='shortcut icon' type='image/x-icon' href="{{url_for('static',filename='favicon.ico')}}" />
+</head>
+<body>
+
+	<!-- navbar -->
+<div class="wrapper">
+<header class="site-header sticky-top" style="min-width: 300px;">
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="min-width: 300px;">
+	<div class="container">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<svg width="4em" height="4em" viewBox="-5 -10 32 32" class="bi bi-book" fill="lavender" xmlns="http://www.w3.org/2000/svg">
+  					<path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 0 0 1 2.82z"/>
+  					<path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
+					</svg>
+					<!-- tsoutsoulidi pou daneistikame apo to bootstrap ws navbar-icon,cause why not -->
+				</li>
+				<li class="nav-item mt-3">
+					<a class="navbar-brand ml-auto" href="{{url_for('home')}}">Κεντρική Σελίδα</a>
+				</li>
+				<li class="nav-item mt-3">
+					<a class="nav-link" href="{{url_for('about')}}">Πληροφορίες</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav mr-4">
+				{%if current_user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{url_for('new_post')}}">Μοιράσου τη Σκέψη σου!</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link mr-auto" href="{{url_for('Account')}}">Προφίλ
+							({{current_user.username}})
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link mr-auto" href="{{url_for('Logout')}}">Αποσύνδεση
+						</a>
+					</li>
+				{%else%}
+					<li class="nav-item">
+						<a class="nav-link mr-auto" href="{{url_for('Login')}}">Συνδέσου</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link mr-auto" href="{{url_for('register')}}">Γίνε μέλος!</a>
+					</li>
+				{%endif%}
+			</ul>
+	</div>
+
+	</nav>
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category, message in messages %}
+			<div class="alert alert-{{ category }}">
+				{{ message }}
+			</div>
+			{% endfor %}
+		{% endif %}
+		{% endwith %}
+</header>
+		<main role="main" class="container">
+			<div class="row mx-auto">
+				<div class="col-10 mx-auto">
+		{% block content %}{% endblock %}
+				</div>
+			</div>
+		</main>
+		<div class="push"></div>
+</div>
+
+
+
+
+<!-- Javascript for Bootsrap directly imported (yet commented out since its "out of bounds")
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+-->
+
+<footer class="relative-bottom container-fluid padding custom-footer">  <!-- me auto to egxeirima katalaba giati kaneis den 												bazei mousiki stis istoselides tou :) -->
+	<div class="row text-center footer-content" style="margin:auto;">
+  		<div class="col-md-4">
+  			<p><b>	Λίγη μουσική? <!-- oxi <strong> giati den exei stoxeuoume se sunais8imatiki fortisi -->
+  			<audio controls loop class="ml-5">
+  			<source src="{{url_for('static',filename='Relaxing Celtic Music - Forest Sanctum.mp3')}}" type="audio/mpeg">
+			Your browser does not support the audio element.
+			</audio>
+			</b>
+			</p>
+  		</div>
+  		<div class="col-md-4">
+  			<p><b>Music By&#169</p>
+  			<a href="https://adrianvonziegler.bandcamp.com/album/the-complete-discography">Adrian Von Ziegler</a>
+  			</b>
+  		</div>
+  		<div class="col-md-4">
+  			<b>
+  			<p>Background Picture Copyrights&#169</p>
+  			<p>Stanislav Kondratiev</p>
+  			</b>
+  		</div>
+  </div>
+</footer>
+</body>
+</html>

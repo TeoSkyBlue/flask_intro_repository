@@ -1,0 +1,241 @@
+html,body {
+  margin:0; padding:0;height:100%;
+}
+
+
+ body {
+  width:100%;
+  font-family: sans-serif;
+  color: #222;
+  background-image:url('stanislav-kondratiev-6pO3QFkk7hQ-unsplash.jpg'); 
+
+/*  background-repeat: no-repeat; */
+  background-color: saddlebrown;  /* gia tin periptwsi pou to background image den "kollaei" swsta*/
+
+}
+
+.inlined{
+  display:inline-block;
+}
+
+.welcome-section {
+  background: rosybrown;
+  padding: 10px 20px;
+  border: 1px solid #222;
+  border-radius: 25% 0;
+  margin-bottom: 0px;
+}
+
+
+
+.content-section {
+  background: burlywood;
+  padding: 10px 20px;
+  border: 1px solid #222;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: darkslategray; 
+}
+
+a.article-title:hover {
+  color: #428bca;
+}
+
+.article-content {
+  white-space: pre-line;
+  width:100%;
+  min-width: 400px;
+}
+
+.autoscrolled{
+  white-space: pre-line;
+  width:100%;
+  height: 10em;
+  overflow: auto;
+  overflow-wrap: break-word;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.low-shadows{
+  box-shadow: 0px 0px 20px 2px #222;
+}
+
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 70%;
+  height: 60%; 
+  vertical-align: middle;
+}
+
+.article-form{
+  vertical-align: middle;
+
+}
+
+.column-medium {
+  vertical-align: middle;
+  width: 60%;
+}
+
+.column-large {
+  vertical-align: middle;
+  width: 90%;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+.display-4{
+  font-size: 300%;
+}
+
+.about-box{
+  width:90%;
+  min-width: 300px;
+  height: 60%;
+  border-radius:10px;
+}
+
+
+.about-content{
+  background-color: skyblue;
+}
+
+.custom-footer {
+  padding-top:1rem;
+  padding:2px;
+  width: 100%;
+  min-width: 300px;
+  height: 10em;
+  border: 3px solid;
+  border-radius: 5px;
+  background-color: lavender;
+  color: #222;
+  text-align: center;
+}
+.footer-content{
+  width:100%;
+  height: 100%;
+  overflow:scroll;
+}
+
+.push{
+  height: 8em;
+}
+
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -8em; /* the bottom margin is the negative value of the footer's height */
+}
+
+
+/*---Media Queries --*/
+@media (max-width: 992px) {
+
+  }
+@media (max-width: 768px) {
+  
+}
+@media (max-width: 576px) {
+  
+}
+
+
+/*---Firefox Bug Fix --*/
+.carousel-item {
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+/*--- Fixed Background Image --*/
+figure {
+  position: relative;
+  width: 100%;
+  height: 60%;
+  margin: 0!important;
+}
+.fixed-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#fixed {
+  background-image: url('img/mac.png');
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  will-change: transform;
+}
+/*--- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
+}
+
+*/
+
+
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+	<article class="media content-section">
+		<img class="rounded-circle article-img low-shadows" src="{{url_for('static',filename='profile_pics/'+post.author.image_file)}}">
+		<div class="media-body acrticle-content" >
+			<div class="article-metadata article-svg">
+				<h4 class="mr-2">By "{{post.author.username}}"</h4>
+					<small class="text-muted">Posted on {{ post.date_posted.strftime("%d/%m/%Y") }}</small>
+					{% if post.author==current_user %}
+					<div class="inlined">
+						<a class="btn btn-secondary btn-sm ml-5" href="{{url_for('edit_post',post_id = post.id)}}" >
+							Edit Post
+						</a>
+						<form action="{{url_for('delete_post',post_id=post.id)}}" method="POST" type="button" class="btn btn-sm m-1 ml-5">
+        				<input type="submit" class="btn btn-danger btn-sm" value="Delete this Post"></form>
+
+					</div>
+					{% endif %}
+			</div>
+			<h2 class="article-title low-shadows rounded ml-2">{{post.title}}</h2>
+			<p class="article-svg mx-auto">{{post.content}}</p>
+		</div>
+	</article>
+<!-- Modal  eipame oxi se javascript,8a itan omorfo to modal pantws,mporei na eswze kai kosmo 
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLongTitle">Are you Sure?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deleted Content Will no Longer linger This Websites' Database
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No,actually</button>
+        <form action="{{url_for('delete_post',post_id=post.id)}}" method="POST">
+        <input type="submit" class="btn btn-danger" value="Yes,Delete this"> </form>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+{% endblock content %}
