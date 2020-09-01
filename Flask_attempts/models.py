@@ -14,6 +14,10 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post',backref='author', lazy = True)
+
+    
+    db.create_all()
+    
 #δεαδ κόουντ μπιλόου
     def get_reset_token(self,expires_sec=1800):
         s = Serial(app.config['SECRET_KEY'],expires_sec)
@@ -41,6 +45,9 @@ class Post(db.Model):
     date_posted = db.Column(db.DateTime,nullable=False,default = datetime.utcnow) #vs datetime.now i diafora einai oti i 2i apo8ikeuei local times,i 1i greenwich,kaliteri praktiki gia database storing
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    db.create_all()
+
     
     def __repr__(self):
         return f"Post('{self.title}','{self.date_posted}')"
