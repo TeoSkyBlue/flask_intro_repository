@@ -16,7 +16,6 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post',backref='author', lazy = True)
 
     
-    db.create_all()
     
 #δεαδ κόουντ μπιλόου
     def get_reset_token(self,expires_sec=1800):
@@ -46,7 +45,6 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-    db.create_all()
 
     
     def __repr__(self):

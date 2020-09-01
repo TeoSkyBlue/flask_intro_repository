@@ -14,8 +14,11 @@ from flask_login import login_user,logout_user, current_user, login_required
 @app.route("/")
 @app.route("/home")
 def home():
-    posts = Post.query.order_by(Post.date_posted.desc()).all()
-    return render_template('html Hello World.html',posts=posts)
+    try:
+        posts = Post.query.order_by(Post.date_posted.desc()).all()
+        return render_template('html Hello World.html',posts=posts)
+    except:
+        return render_template('html Hello World.html')
 
 @app.route("/about")
 def about():
