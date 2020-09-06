@@ -3,7 +3,7 @@
 	<div class="containter-fluid">
 	<div class="row text-center">
 		<div class="col-11 welcome-section ml-3">
-			<h1 class="display-5" style="text-shadow: 2px 2px 15px #222;">Σας Καλωσορίζουμε στην Ιστοσελίδα μας!
+			<h1 class="display-5" style="text-shadow: 2px 2px 15px #222;overflow-wrap: break-word;">Σας Καλωσορίζουμε στην Ιστοσελίδα μας!
 			</h1>
 			<hr>
 			<div class="col-11">
@@ -15,7 +15,7 @@
 	</div>
 	<br>
 	{%for post in posts%}
-		<article class="media content-section article-content">
+		<article class="media content-section text-center article-content">
 			<img class="rounded-circle article-img low-shadows" src="{{url_for('static',filename='profile_pics/'+post.author.image_file)}}">
 			<div class="media-body article-svg">
 				<div class="article-metadata article-svg">

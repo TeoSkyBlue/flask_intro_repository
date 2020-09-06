@@ -47,7 +47,7 @@ a.article-title:hover {
 .article-content {
   white-space: pre-line;
   width:100%;
-  min-width: 400px;
+  min-width: 300px;
 }
 
 .autoscrolled{
