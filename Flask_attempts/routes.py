@@ -127,9 +127,9 @@ def Account():
         current_user.email = form.email.data
         db.session.commit()
         flash("Update Saved!",'success')
-        if previous_pic!="default.jpg":  #Genika me os.remove se local path den nomizw na paizei otan to site anebei to Heroku,opote mporei na xreiastei na paratiseis tin idea
-           # print(previous_pic)            Ostoso fantazomai o xwros twn pics, ektos tou oti einai mikros,den 8a einai kai dikos sou,den 8a klapsoume
-            os.remove(url_for('static',filename = "profile_pics/"+ previous_pic))
+       # if previous_pic!="default.jpg":   auti itan mia mikro e3upnada gia diagrafi tis palias foto tou xristi apo to database otan autos 8a allaze prof_pic, den douleuei sto heroku giati den vlepei to directory
+        #   # print(previous_pic)            Ostoso to heroku kanei ka8e toso clear cache opote tipota kainourgio den "menei",mikro to kako,apla itan wraio pou douleue locally
+        #    os.remove(url_for('static',filename = "profile_pics/"+ previous_pic))
         return redirect(url_for('Account')) # den 8es na peseis sto return giati dimiourgei neo post request sto server kai egkumonei xaos
     elif request.method =='GET':
         form.username.data = current_user.username
