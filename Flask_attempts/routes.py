@@ -127,9 +127,9 @@ def Account():
         current_user.email = form.email.data
         db.session.commit()
         flash("Update Saved!",'success')
-        if previous_pic!="default.jpg":  #Genika me os.remove den nomizw na paizei otan to site anebei to Heroku,opote mporei na xreiastei na paratiseis tin idea
+        if previous_pic!="default.jpg":  #Genika me os.remove se local path den nomizw na paizei otan to site anebei to Heroku,opote mporei na xreiastei na paratiseis tin idea
            # print(previous_pic)            Ostoso fantazomai o xwros twn pics, ektos tou oti einai mikros,den 8a einai kai dikos sou,den 8a klapsoume
-            os.remove("C:/Users/TeotoAE/Desktop/StudyPack/ΕισαγωγήPC/Python38/Scripts/Flask website/Flask_attempts"+url_for('static',filename = "profile_pics/"+ previous_pic))
+            os.remove(url_for('static',filename = "profile_pics/"+ previous_pic))
         return redirect(url_for('Account')) # den 8es na peseis sto return giati dimiourgei neo post request sto server kai egkumonei xaos
     elif request.method =='GET':
         form.username.data = current_user.username
@@ -174,7 +174,6 @@ def edit_post(post_id):
         form.content.data = post.content
     return render_template('create_post.html',title='Edit Post',
                                form=form, legend='Edit Post')
-#na pros8eseis kati san "Last edited on (New_Date)",pisteuw einai arketa simantiko
 
 
 @app.route("/post/<int:post_id>/delete",methods=['POST'])
@@ -187,34 +186,6 @@ def delete_post(post_id):
     db.session.commit()
     flash('Post is no longer part of the website','success')
     return redirect(url_for('home'))
-#παρακατω έχουμε νεκρό κώδικα, ίσως τον βγάλο για διαύγεια ,ίσως όμως όχι :(
-def send_reset_email(user):
-    pass
-
-@app.route("/reset_password",methods=['GET', 'POST'])
-def reset_request():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    form = RequestResetForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        send_reset_email(user)
-        flash("An email for password reset has been sent to the given address",'info')
-        return redirect(url_for('Login'))
-    return render_template('reset_request.html',title='Reset Password', form=form)
-
-@app.route("/reset_password/<token>",methods=['GET','POST'])
-def reset_password(token):
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    user = User.verify_reset_token(token)
-    if not user:
-        flash("Token Invalid or Expired",'danger')
-        return redirect(url_for('reset_request'))
-    else:
-        form = ResetPasswordForm()
-        return render_template('reset_token.html',title='Reset Password',form=form)
-
 
 
 

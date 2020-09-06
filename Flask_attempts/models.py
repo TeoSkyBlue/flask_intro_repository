@@ -16,26 +16,6 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post',backref='author', lazy = True)
 
     
-    
-#δεαδ κόουντ μπιλόου
-    def get_reset_token(self,expires_sec=1800):
-        s = Serial(app.config['SECRET_KEY'],expires_sec)
-        return s.dumps({'user_id':self.id}).decode('utf-8')
-
-    @staticmethod
-    def verify_reset_token(token):
-        s =Serializer(app.config['SECRET_KEY'])
-        try:
-            user_id = s.loads(token)['user_id']
-        except:
-            return None
-        return User.query.get(user_id)
-
-# τελος του dead code
-    def __repr__(self):
-        return f"User('{self.username}','{self.email}','{self.image_file}')"
-
-
 
 
 class Post(db.Model):
@@ -46,8 +26,4 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
-    
-    def __repr__(self):
-        return f"Post('{self.title}','{self.date_posted}')"
-                                                                     
 

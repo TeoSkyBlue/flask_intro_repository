@@ -53,21 +53,14 @@ class UpdateForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('Αυτό το email χρησιμοποιείται ήδη.')
-#dead code :(
-class RequestResetForm(FlaskForm):
-    email = StringField('Email',validators=[DataRequired(),Email()])
-    submit = SubmitField('Request Password Reset')
+
     
     def validate_email(self,email):
         if email.data!=current_user.email:
             user = User.query.filter_by(email=email.data).first()
             if user is None:
-                raise ValidationError('No account currently using this email.')
+                raise ValidationError('Aυτό το email δεν υπάρχει.')
     
-class ResetPasswordForm(FlaskForm):
-    password = PasswordField('password',validators=[DataRequired(), Length(min=5,max=100)])
-    password_confirm = PasswordField('password confirmation',validators=[DataRequired(), Length(min=5,max=100), EqualTo('password')])
-    submit = SubmitField('Reset Password')
 
 
 
