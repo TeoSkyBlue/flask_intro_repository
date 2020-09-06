@@ -47,7 +47,7 @@ a.article-title:hover {
 .article-content {
   white-space: pre-line;
   width:100%;
-  min-width: 300px;
+  min-width: 400px;
 }
 
 .autoscrolled{
@@ -118,7 +118,7 @@ a.article-title:hover {
 
 .about-box{
   width:90%;
-  min-width: 300px;
+  min-width: 400px;
   height: 60%;
   border-radius:10px;
 }
@@ -132,7 +132,7 @@ a.article-title:hover {
   padding-top:1rem;
   padding:2px;
   width: 100%;
-  min-width: 300px;
+  min-width: 400px;
   height: 10em;
   border: 3px solid;
   border-radius: 5px;
