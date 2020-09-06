@@ -4,7 +4,7 @@ import functools
 from PIL import Image
 from flask import render_template, url_for,flash,redirect, request,abort
 from Flask_attempts.models import User,Post
-from Flask_attempts.Wtforms import RegistrationForm, LoginForm, PostForm,UpdateForm,RequestResetForm,ResetPasswordForm
+from Flask_attempts.Wtforms import RegistrationForm, LoginForm, PostForm,UpdateForm
 from Flask_attempts import app,db,bcrypt
 from flask_login import login_user,logout_user, current_user, login_required
 
